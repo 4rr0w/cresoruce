@@ -4,11 +4,12 @@ import SearchBar from "./../widgets/searchbar";
 import { Select, Button, Radio, DatePicker, Input } from 'antd';
 import { RegionDropdown} from 'react-country-region-selector';
 import { SearchOutlined, PlusOutlined } from '@ant-design/icons';
+import Results from '../widgets/results';
 
 
 const { Option } = Select;
 const { RangePicker } = DatePicker;
-
+const { TextArea } = Input;
 function HomePage(props) {
 
     const [region,  setRegion] = useState("");
@@ -16,6 +17,8 @@ function HomePage(props) {
     const [searchHeadingText, setSearchHeadingText] = useState("Advance filtered ");
     const [requirenments, setRequirenments] = useState([]);
     const [resource, setResource] = useState('');
+
+
 
     return(
         <div className= "container" >
@@ -257,6 +260,7 @@ function HomePage(props) {
                             >
                                 <Option value="1">Oxygen Bed</Option>
                                 <Option value="2">ICU Bed</Option>
+                                <Option value="3">Both</Option>
                             </Select>
 
                         <Input
@@ -311,6 +315,13 @@ function HomePage(props) {
                             value={region}
                             onChange={(val) => setRegion(val)} 
                         />
+
+                        <Input
+                             placeholder="Additional Contact / Info / Remarks"
+                             onChange= {(a) => console.log(a)}
+                             style={{ width: '30%', minWidth: "250px", margin: "5px", padding: "5px", minHeight : "40px"}}
+    
+                        />
                         
                     </div>
 
@@ -334,6 +345,8 @@ function HomePage(props) {
                     width: "100%"
                 }}
             />
+
+            <Results/>
         </div>
     );
 }

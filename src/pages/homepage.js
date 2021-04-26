@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import 'antd/dist/antd.css';
 import SearchBar from "./../widgets/searchbar";
 import { Select, Button, Radio, DatePicker, Input } from 'antd';
@@ -12,11 +12,22 @@ const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 function HomePage(props) {
 
-    const [region,  setRegion] = useState("");
     const [toggle, setToggle] = useState("a");
-    const [searchHeadingText, setSearchHeadingText] = useState("Advance filtered ");
     const [requirenments, setRequirenments] = useState([]);
-    const [resource, setResource] = useState('');
+    const [resource, setResource] = useState(''); 
+
+    const [reqMeds, setReqMeds] = useState([]);
+    const [oxygenType, setOxygenType] = useState("");
+    const [reqBloodGroup, setReqBloodGroup] = useState("");
+    const [diagonosedRecovered, setDiagnosedRecovered] = useState([]);
+    const [region,  setRegion] = useState("");
+
+
+
+
+    useEffect(()=>{
+
+    }, []);
 
 
 
@@ -32,7 +43,11 @@ function HomePage(props) {
             <div className="d-flex flex-column"> 
                 <Radio.Group defaultValue="a" buttonStyle="solid" className="m-auto">
                     <Radio.Button value="a" 
-                    onClick = {() => setToggle("a")}
+                    onClick = {() => {
+                        setRequirenments([]);
+                        setToggle("a");
+                        }
+                    }
                     >
                         Search Resources
                     </Radio.Button>
@@ -44,7 +59,11 @@ function HomePage(props) {
                     </Radio.Button>
 
                     <Radio.Button value="c"
-                        onClick = {() => setToggle("c")} 
+                        onClick = {() => {
+                            setToggle("c");
+                            setRequirenments([]);
+                            }
+                        } 
                     >
                         Add Resources
                     </Radio.Button>
@@ -73,7 +92,7 @@ function HomePage(props) {
                                 size="large"
                                 placeholder="Select Requirenments"
                                 onChange= {(array) => setRequirenments(array)}
-                                style={{ width: '30%', minWidth: "180px" , margin: "5px", maxHeight: "80px", overflow: 'auto' }}
+                                style={{ width: '30%', minWidth: "250px" , margin: "5px", maxHeight: "80px", overflow: 'auto' }}
                             >
                                 <Option value="Oxygen">Oxygen</Option>
                                 <Option value="Ambulance">Ambulance</Option>
@@ -93,7 +112,7 @@ function HomePage(props) {
                                 mode="multiple"
                                 size="large"
                                 placeholder="Required Medicines"
-                                onChange= {(a) => console.log(a)}
+                                onChange= {(array) => setReqMeds(array)}
                                 style={{ width: '30%', minWidth: "250px", margin: "5px", maxHeight: "80px", overflow: 'auto'}}
                             >
                                 <Option value="1">Remdesivir (Veklury)</Option>
@@ -113,7 +132,7 @@ function HomePage(props) {
                             mode="single"
                             size="large"
                             placeholder="Oxygen resource type"
-                            onChange= {(a) => console.log(a)}
+                            onChange= {(oxy) => setOxygenType(oxy)}
                             style={{ width: '30%', minWidth: "250px", margin: "5px", maxHeight: "40px", overflow: 'auto'}}
                         >
                             <Option value="refill">Cylinder Refill</Option>
@@ -131,8 +150,8 @@ function HomePage(props) {
                                 mode="single"
                                 size="large"
                                 placeholder="Required Blood Group"
-                                onChange= {(a) => console.log(a)}
-                                style={{ width: '30%', minWidth: "200px", margin: "5px", maxHeight: "40px"}}
+                                onChange= {(a) => setReqBloodGroup(a)}
+                                style={{ width: '30%', minWidth: "250px", margin: "5px", maxHeight: "40px"}}
                             >
                                 <Option value="A+">A+</Option>
                                 <Option value="A-">A-</Option>
@@ -147,12 +166,13 @@ function HomePage(props) {
                             style={{height: "40px", margin: "5px", minWidth : "250px", width: "30%"}}
                             placeholder = {["Diagonosed after", "Recovered before"]}
                             picker = "month"
+                            onChange = {(date, dateString) => setDiagnosedRecovered(dateString)} 
                         />
                         </>
                         }
 
                         <RegionDropdown
-                            style ={{padding: "5px", margin : "5px", width: "30%", minWidth : "180px", maxHeight: "40px" }}
+                            style ={{padding: "5px", margin : "5px", width: "30%", minWidth : "250px", maxHeight: "40px" }}
                             country="India"
                             value={region}
                             onChange={(val) => setRegion(val)} 
@@ -345,8 +365,19 @@ function HomePage(props) {
                     width: "100%"
                 }}
             />
+            {
+                toggle === 'b' &&
+            
+            <Results
+                req = {requirenments}
+                med = {reqMeds}
+                oxy = {oxygenType}
+                bloodGroup = {reqBloodGroup}
+                timeline = {diagonosedRecovered}
+                region = {region}
+            />
 
-            <Results/>
+            }
         </div>
     );
 }

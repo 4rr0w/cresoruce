@@ -40,9 +40,10 @@ function HomePage(props) {
                 
             </div>
 
-            <div className="d-flex flex-column"> 
-                <Radio.Group defaultValue="a" buttonStyle="solid" className="m-auto">
+            <div className="d-flex flex-column mt-5"> 
+                <Radio.Group defaultValue="a" buttonStyle="solid" size ="small" className="m-auto">
                     <Radio.Button value="a" 
+                    
                     onClick = {() => {
                         setRequirenments([]);
                         setToggle("a");

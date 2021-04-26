@@ -85,24 +85,27 @@ function Results(props) {
     var settings = {
         dots: false,
         infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        speed: 1000,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 1,
         responsive: [
 
             {
-                breakpoint: 1224, // width to change options
+                breakpoint: 1440, // width to change options
                 settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  initialSlide: 1
                 }
               },
 
             {
-              breakpoint: 1024, // width to change options
+              breakpoint:1000, // width to change options
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
+                initialSlide: 1
               }
             },
             {
@@ -110,7 +113,7 @@ function Results(props) {
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,
-                initialSlide: 2
+                initialSlide: 1
               }
             },
             // {
@@ -139,7 +142,7 @@ function Results(props) {
             {
                 props.req.length !== 0 &&
                 <>
-                    <Slider {...settings}>             
+                    <Slider {...settings} className="m-auto">             
                         
                             { 
                                 bloodResourcesSlide

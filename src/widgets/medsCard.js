@@ -8,17 +8,6 @@ import Typography from '@material-ui/core/Typography';
 
 function MedsCard(props) {   
     
-   
-      const bull = <span 
-                        style={{ 
-                            display: 'inline-block',
-                            margin: '0 2px',
-                            transform: 'scale(0.8)'
-                        }}
-                    >
-                        •
-                    </span>;
-    
       return (
         <Card style={{
             minWidth: "250px",
@@ -35,10 +24,10 @@ function MedsCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region | verified?
+             Medicine in {props.data.fields["region"]} | {props.data.fields["verified"] && "Verified"} {!props.data.fields["verified"] && "Not Verified"}
             </Typography>
             <Typography variant="h5" component="h2">
-                Contact
+            {props.data.fields["contact"]}
             </Typography>
             <Typography 
                 style={{
@@ -47,11 +36,11 @@ function MedsCard(props) {
                 color="textSecondary"
             >  
             <p>
-             Available meds
+                {props.data.fields["meds-name"]}
             </p>
             </Typography>
             <Typography variant="body2" component="p">
-                additional info
+            {props.data.fields["info"]}
             </Typography>
           </CardContent>
           <CardActions>

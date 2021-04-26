@@ -135,12 +135,12 @@ function Results(props) {
       };
      
    
-    const bloodResourcesSlide =  bloodelements.map( () => <div> <BloodCard /> </div>);
-    const plasmaResourcesSlide = plasmaelements.map( () => <div> <PlasmaCard /> </div>);
-    const oxyResourcesSlide = oxyelements.map( () => <div> <OxyCard /> </div>);
-    const medResourcesSlide =  medelements.map( () => <div> <MedsCard /> </div>);
-    const bedResourcesSlide = bedelements.map( () => <div> <BedCard /> </div>);
-    const ambulanceResourcesSlide = ambulanceelements.map( () => <div> <AmbulanceCard /> </div>);
+    const bloodResourcesSlide =  bloodelements.map( (data) => <div> <BloodCard data = {data} /> </div>);
+    const plasmaResourcesSlide = plasmaelements.map( (data) => <div> <PlasmaCard data = {data}/> </div>);
+    const oxyResourcesSlide = oxyelements.map( (data) => <div> <OxyCard data = {data} /> </div>);
+    const medResourcesSlide =  medelements.map( (data) => <div> <MedsCard data ={data} /> </div>);
+    const bedResourcesSlide = bedelements.map( (data) => <div> <BedCard data = {data} /> </div>);
+    const ambulanceResourcesSlide = ambulanceelements.map( (data) => <div> <AmbulanceCard data= {data} /> </div>);
   return (
 
        

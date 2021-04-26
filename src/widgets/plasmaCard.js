@@ -9,15 +9,6 @@ import Typography from '@material-ui/core/Typography';
 function PlasmaCard(props) {   
     
    
-      const bull = <span 
-                        style={{ 
-                            display: 'inline-block',
-                            margin: '0 2px',
-                            transform: 'scale(0.8)'
-                        }}
-                    >
-                        •
-                    </span>;
     
       return (
         <Card style={{
@@ -35,26 +26,26 @@ function PlasmaCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region | Blood Group
+            Plasma donor in  {props.data.fields["region"]} | {props.data.fields["blood-group"]}
             </Typography>
             <Typography variant="h5" component="h2">
-                Contact
+            {props.data.fields["contact"]}
             </Typography>
             <Typography 
                 style={{
-                    marginBottom: 12,
+                    marginBottom: 12,marginTop: 5
                 }} 
                 color="textSecondary"
             >
             <p>
-             Diagonosed on: 
+             Diagonosed on: {props.data.fields["diagnosed"]}
             </p>  
             <p>
-            Recovered on : 
+            Recovered on : {props.data.fields["recovered"]}
             </p>
             </Typography>
             <Typography variant="body2" component="p">
-                additional info
+              {props.data.fields["info"]}
             </Typography>
           </CardContent>
           <CardActions>

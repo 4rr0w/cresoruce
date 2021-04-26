@@ -8,16 +8,6 @@ import Typography from '@material-ui/core/Typography';
 
 function OxyCard(props) {   
     
-   
-      const bull = <span 
-                        style={{ 
-                            display: 'inline-block',
-                            margin: '0 2px',
-                            transform: 'scale(0.8)'
-                        }}
-                    >
-                        •
-                    </span>;
     
       return (
         <Card style={{
@@ -35,10 +25,10 @@ function OxyCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region | Refill or Machine
+             Oxygen in  {props.data.fields["region"]} | {props.data.fields["type"]}
             </Typography>
             <Typography variant="h5" component="h2">
-                Contact
+            {props.data.fields["contact"]}
             </Typography>
             <Typography 
                 style={{
@@ -49,7 +39,7 @@ function OxyCard(props) {
              
             </Typography>
             <Typography variant="body2" component="p">
-            additional info
+            {props.data.fields["info"]}
             </Typography>
           </CardContent>
           <CardActions>

@@ -35,10 +35,10 @@ function AmbulanceCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region
+             Ambulance in  {props.data.fields["region"]}
             </Typography>
             <Typography variant="h5" component="h2">
-                Contact
+            {props.data.fields["contact"]}
             </Typography>
             <Typography 
                 style={{
@@ -49,7 +49,7 @@ function AmbulanceCard(props) {
              
             </Typography>
             <Typography variant="body2" component="p">
-            additional info
+            {props.data.fields["info"]}
             </Typography>
           </CardContent>
           <CardActions>

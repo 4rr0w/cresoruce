@@ -8,16 +8,6 @@ import Typography from '@material-ui/core/Typography';
 
 function BedCard(props) {   
     
-   
-      const bull = <span 
-                        style={{ 
-                            display: 'inline-block',
-                            margin: '0 2px',
-                            transform: 'scale(0.8)'
-                        }}
-                    >
-                        •
-                    </span>;
     
       return (
         <Card style={{
@@ -35,10 +25,10 @@ function BedCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region | Bed Type
+             Beds in {props.data.fields["region"]} | {props.data.fields["bed-type"]}
             </Typography>
             <Typography variant="h5" component="h2">
-                Contact
+            {props.data.fields["contact"]}
             </Typography>
             <Typography 
                 style={{
@@ -50,14 +40,14 @@ function BedCard(props) {
              Number of beds : 
             </p>  
             <p>
-             Hospital Name 
+            {props.data.fields["hospital-name"]}
             </p>
             <p>
-             Hospital Address
-            </p>
+            {props.data.fields["address"]}
+             </p>
             </Typography>
             <Typography variant="body2" component="p">
-                additional info
+            {props.data.fields["info"]}
             </Typography>
           </CardContent>
           <CardActions>

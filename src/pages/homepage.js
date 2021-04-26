@@ -41,8 +41,8 @@ function HomePage(props) {
             </div>
 
             <div className="d-flex flex-column mt-5"> 
-                <Radio.Group defaultValue="a" buttonStyle="solid" size ="small" className="m-auto">
-                    <Radio.Button value="a" 
+                <Radio.Group defaultValue="a" buttonStyle="solid" size ="medium" className="m-auto">
+                    {/* <Radio.Button value="a" 
                     
                     onClick = {() => {
                         setRequirenments([]);
@@ -51,12 +51,12 @@ function HomePage(props) {
                     }
                     >
                         Search Resources
-                    </Radio.Button>
+                    </Radio.Button> */}
 
                     <Radio.Button value="b"
                         onClick = {() => setToggle("b")}          
                     >
-                        Advance Search
+                        Search Resources
                     </Radio.Button>
 
                     <Radio.Button value="c"

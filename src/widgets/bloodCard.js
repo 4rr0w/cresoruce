@@ -23,6 +23,8 @@ function BloodCard(props) {
         <Card style={{
             minWidth: "250px",
             width: "30%",
+            marginRight: "5px",
+            padding: "5px",
           }}>
           <CardContent>
             <Typography 

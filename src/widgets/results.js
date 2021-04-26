@@ -24,55 +24,61 @@ function Results(props) {
     const bedbase = new Airtable({apiKey: apiKey}).base(bedBase);
     const abase = new Airtable({apiKey: apiKey}).base(ambulanceBase);
 
-    const [bloodelements, setBloodelements] = useState([]);   
+    const [plasmaelements, setPlasmaelements] = useState([]);   
+
+    const [bloodelements, setBloodelements] = useState([]);  
     
+    const [oxyelements, setOxyelements] = useState([]);
+   
+    const [medelements, seteMedelements] = useState([]);   
+
+    const [bedelements, setBedelements] = useState([]);  
+    
+    const [ambulanceelements, setAmbulanceelements] = useState([]);
 
     useEffect(() => {
 
-        // oxybase("resources")
-        //     .select({ view : "Grid view" })
-        //     .eachPage((records, fetchNextPage) => {
-           
-        //     fetchNextPage();
-        // });
+        oxybase("resources")
+            .select({ view : "Grid view" })
+            .eachPage((records, fetchNextPage) => {
+            setOxyelements(records);
+            fetchNextPage();
+        });
 
         bbase("resources")
             .select({ view : "Grid view" })
             .eachPage((records, fetchNextPage) => {
-                
             setBloodelements(records);
-            console.log(records);
-            console.log(bloodelements)
             fetchNextPage();
         });
 
-        // pbase("resources")
-        //     .select({ view : "Grid view" })
-        //     .eachPage((records, fetchNextPage) => {
-            
-        //     fetchNextPage();
-        // });
+        pbase("resources")
+            .select({ view : "Grid view" })
+            .eachPage((records, fetchNextPage) => {
+            setPlasmaelements(records);
+            fetchNextPage();
+        });
 
-        // medbase("resources")
-        //     .select({ view : "Grid view" })
-        //     .eachPage((records, fetchNextPage) => {
-           
-        //     fetchNextPage();
-        // });
+        medbase("resources")
+            .select({ view : "Grid view" })
+            .eachPage((records, fetchNextPage) => {
+            seteMedelements(records);
+            fetchNextPage();
+        });
 
-        // bedbase("resources")
-        //     .select({ view : "Grid view" })
-        //     .eachPage((records, fetchNextPage) => {
-           
-        //     fetchNextPage();
-        // });
+        bedbase("resources")
+            .select({ view : "Grid view" })
+            .eachPage((records, fetchNextPage) => {
+            setBedelements(records);
+            fetchNextPage();
+        });
 
-        // abase("resources")
-        //     .select({ view : "Grid view" })
-        //     .eachPage((records, fetchNextPage) => {
-          
-        //     fetchNextPage();
-        // });
+        abase("resources")
+            .select({ view : "Grid view" })
+            .eachPage((records, fetchNextPage) => {
+            setAmbulanceelements(records);
+            fetchNextPage();
+        });
     }, [props.req]);
 
 
@@ -80,11 +86,52 @@ function Results(props) {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        responsive: [
+
+            {
+                breakpoint: 1224, // width to change options
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                }
+              },
+
+            {
+              breakpoint: 1024, // width to change options
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                initialSlide: 2
+              }
+            },
+            // {
+            //     breakpoint: 400,
+            //     settings: {
+            //       slidesToShow: 1,
+            //       slidesToScroll: 1,
+            //       initialSlide: 1
+            //     }
+            //   }
+          ]
+
       };
      
-
+   
+    const bloodResourcesSlide =  bloodelements.map( () => <div> <BloodCard /> </div>);
+    const plasmaResourcesSlide = plasmaelements.map( () => <div> <BloodCard /> </div>);
+    const oxyResourcesSlide = oxyelements.map( () => <div> <BloodCard /> </div>);
+    const medResourcesSlide =  medelements.map( () => <div> <BloodCard /> </div>);
+    const bedResourcesSlide = bedelements.map( () => <div> <BloodCard /> </div>);
+    const ambulanceResourcesSlide = ambulanceelements.map( () => <div> <BloodCard /> </div>);
   return (
 
        
@@ -95,14 +142,89 @@ function Results(props) {
                     <Slider {...settings}>             
                         
                             { 
-                             bloodelements.map( (resource, index) => {
-                                <BloodCard />
-                             })
+                                bloodResourcesSlide
+                            }
+                           
+                    </Slider>
+
+                        <hr
+                            style={{
+                                borderTop: "2px solid black",
+                                width: "100%"
+                            }}
+                        />
+
+                    <Slider {...settings}>  
+                   
+
+                            {
+                                plasmaResourcesSlide
                             }
 
-                            {console.log(bloodelements)}
-                        
-                            
+                    </Slider>
+
+                        <hr
+                            style={{
+                                borderTop: "2px solid black",
+                                width: "100%"
+                            }}
+                        />
+
+                    <Slider {...settings}>  
+                   
+
+                            {
+                                oxyResourcesSlide
+                            }
+
+                    </Slider>
+
+                    <hr
+                            style={{
+                                borderTop: "2px solid black",
+                                width: "100%"
+                            }}
+                        />
+
+                    <Slider {...settings}>  
+                   
+
+                            {
+                                bedResourcesSlide
+                            }
+
+                    </Slider>
+
+                    <hr
+                            style={{
+                                borderTop: "2px solid black",
+                                width: "100%"
+                            }}
+                        />
+
+                    <Slider {...settings}>  
+                   
+
+                            {
+                                ambulanceResourcesSlide
+                            }
+
+                    </Slider>
+
+                    <hr
+                            style={{
+                                borderTop: "2px solid black",
+                                width: "100%"
+                            }}
+                        />
+
+                    <Slider {...settings}>  
+                   
+
+                            {
+                                medResourcesSlide
+                            }
+
                     </Slider>
                 </>
             }

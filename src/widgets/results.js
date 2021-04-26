@@ -3,6 +3,12 @@ import Airtable from 'airtable';
 import { PropertySafetyFilled } from '@ant-design/icons';
 import Slider from "react-slick";
 import BloodCard from "./bloodCard";
+import PlasmaCard from "./plasmaCard";
+import OxyCard from "./oxyCard";
+import AmbulanceCard from "./ambulanceCard";
+import BedCard from "./bedCard";
+import MedsCard from "./medsCard";
+
 
 
 const apiKey = "keyC4NFywqgWGwC7B";
@@ -85,7 +91,7 @@ function Results(props) {
     var settings = {
         dots: false,
         infinite: false,
-        speed: 1000,
+        speed: 50,
         slidesToShow: 4,
         slidesToScroll: 4,
         initialSlide: 1,
@@ -130,96 +136,137 @@ function Results(props) {
      
    
     const bloodResourcesSlide =  bloodelements.map( () => <div> <BloodCard /> </div>);
-    const plasmaResourcesSlide = plasmaelements.map( () => <div> <BloodCard /> </div>);
-    const oxyResourcesSlide = oxyelements.map( () => <div> <BloodCard /> </div>);
-    const medResourcesSlide =  medelements.map( () => <div> <BloodCard /> </div>);
-    const bedResourcesSlide = bedelements.map( () => <div> <BloodCard /> </div>);
-    const ambulanceResourcesSlide = ambulanceelements.map( () => <div> <BloodCard /> </div>);
+    const plasmaResourcesSlide = plasmaelements.map( () => <div> <PlasmaCard /> </div>);
+    const oxyResourcesSlide = oxyelements.map( () => <div> <OxyCard /> </div>);
+    const medResourcesSlide =  medelements.map( () => <div> <MedsCard /> </div>);
+    const bedResourcesSlide = bedelements.map( () => <div> <BedCard /> </div>);
+    const ambulanceResourcesSlide = ambulanceelements.map( () => <div> <AmbulanceCard /> </div>);
   return (
 
        
-        <div>
+        <div className="container mb-5">
             {
                 props.req.length !== 0 &&
                 <>
-                    <Slider {...settings} className="m-auto">             
+                    {
+                        props.req.some(r =>  r === "Blood") &&
+                        <>
+                            <Slider {...settings} className="m-auto">             
                         
-                            { 
-                                bloodResourcesSlide
-                            }
-                           
-                    </Slider>
+                                    { 
+                                        bloodResourcesSlide
+                                    }
+                                
+                            </Slider>
+
+                                <hr
+                                    style={{
+                                        borderTop: "1px solid grey",
+                                        width: "80%",
+                                    }}
+                                />
+
+                        </>
+                    }
+
+                    {
+                        props.req.some(r =>  r === "Plasma") &&
+                        <>
+                    
+
+                            <Slider {...settings}>  
+                        
+
+                                    {
+                                        plasmaResourcesSlide
+                                    }
+
+                            </Slider>
+
+                                <hr
+                                    style={{
+                                        borderTop: "1px solid grey",
+                                        width: "80%"
+                                    }}
+                                />
+                        </>
+                    }
+
+                    {
+                        props.req.some(r =>  r === "Oxygen") &&
+                        <>
+                            <Slider {...settings}>  
+                        
+
+                                    {
+                                        oxyResourcesSlide
+                                    }
+
+                            </Slider>
+
+                            <hr
+                                    style={{
+                                        borderTop: "1px solid grey",
+                                        width: "80%",
+                                    }}
+                                />
+                        </>
+                    }
+
+                    {
+                         props.req.some(r =>  r === "Bed") &&
+                         <>
+
+                            <Slider {...settings}>  
+                                            
+
+                                    {
+                                        bedResourcesSlide
+                                    }
+
+                            </Slider>
+
+                            <hr
+                                    style={{
+                                        borderTop: "1px solid grey",
+                                        width: "80%",
+                                    }}
+                                />
+
+                         </>
+                        
+                    }
+
+                    {
+                        
+                        props.req.some(r =>  r === "Ambulance") &&
+                        <>
+
+
+                        <Slider {...settings}>  
+                    
+
+                                {
+                                    ambulanceResourcesSlide
+                                }
+
+                        </Slider>
 
                         <hr
-                            style={{
-                                borderTop: "2px solid black",
-                                width: "100%"
-                            }}
-                        />
+                                style={{
+                                    borderTop: "1px solid grey",
+                                    width: "80%"
+                                }}
+                            />
+                        </>
+                    }
+                   
+                   {
+                    props.req.some(r =>  r === "Medicines") &&
+                    <>
 
-                    <Slider {...settings}>  
                    
 
-                            {
-                                plasmaResourcesSlide
-                            }
-
-                    </Slider>
-
-                        <hr
-                            style={{
-                                borderTop: "2px solid black",
-                                width: "100%"
-                            }}
-                        />
-
-                    <Slider {...settings}>  
-                   
-
-                            {
-                                oxyResourcesSlide
-                            }
-
-                    </Slider>
-
-                    <hr
-                            style={{
-                                borderTop: "2px solid black",
-                                width: "100%"
-                            }}
-                        />
-
-                    <Slider {...settings}>  
-                   
-
-                            {
-                                bedResourcesSlide
-                            }
-
-                    </Slider>
-
-                    <hr
-                            style={{
-                                borderTop: "2px solid black",
-                                width: "100%"
-                            }}
-                        />
-
-                    <Slider {...settings}>  
-                   
-
-                            {
-                                ambulanceResourcesSlide
-                            }
-
-                    </Slider>
-
-                    <hr
-                            style={{
-                                borderTop: "2px solid black",
-                                width: "100%"
-                            }}
-                        />
 
                     <Slider {...settings}>  
                    
@@ -229,6 +276,9 @@ function Results(props) {
                             }
 
                     </Slider>
+
+                    </>
+                    }
                 </>
             }
         </div>

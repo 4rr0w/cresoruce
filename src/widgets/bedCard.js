@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';  
 
 
-function BloodCard(props) {   
+function BedCard(props) {   
     
    
       const bull = <span 
@@ -35,7 +35,7 @@ function BloodCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region | Blood Group
+              Region | Bed Type
             </Typography>
             <Typography variant="h5" component="h2">
                 Contact
@@ -46,10 +46,18 @@ function BloodCard(props) {
                 }} 
                 color="textSecondary"
             >
-             
+            <p>
+             Number of beds : 
+            </p>  
+            <p>
+             Hospital Name 
+            </p>
+            <p>
+             Hospital Address
+            </p>
             </Typography>
             <Typography variant="body2" component="p">
-            additional info
+                additional info
             </Typography>
           </CardContent>
           <CardActions>
@@ -59,4 +67,4 @@ function BloodCard(props) {
       );
 }
 
-export default BloodCard;
+export default BedCard;

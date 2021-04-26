@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';  
 
 
-function BloodCard(props) {   
+function PlasmaCard(props) {   
     
    
       const bull = <span 
@@ -46,10 +46,15 @@ function BloodCard(props) {
                 }} 
                 color="textSecondary"
             >
-             
+            <p>
+             Diagonosed on: 
+            </p>  
+            <p>
+            Recovered on : 
+            </p>
             </Typography>
             <Typography variant="body2" component="p">
-            additional info
+                additional info
             </Typography>
           </CardContent>
           <CardActions>
@@ -59,4 +64,4 @@ function BloodCard(props) {
       );
 }
 
-export default BloodCard;
+export default PlasmaCard;

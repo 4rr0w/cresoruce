@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';  
 
 
-function BloodCard(props) {   
+function OxyCard(props) {   
     
    
       const bull = <span 
@@ -35,7 +35,7 @@ function BloodCard(props) {
                 color="textSecondary" 
                 gutterBottom
             >
-              Region | Blood Group
+              Region | Refill or Machine
             </Typography>
             <Typography variant="h5" component="h2">
                 Contact
@@ -59,4 +59,4 @@ function BloodCard(props) {
       );
 }
 
-export default BloodCard;
+export default OxyCard;

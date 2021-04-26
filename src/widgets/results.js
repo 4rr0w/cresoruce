@@ -23,6 +23,8 @@ const oxygenBase = "appUNLEItScN5Be4i";
 
 function Results(props) {
 
+    console.log(props.med);
+
     const oxybase = new Airtable({apiKey: apiKey}).base(oxygenBase);
     const bbase = new Airtable({apiKey: apiKey}).base(bloodBase);
     const pbase = new Airtable({apiKey: apiKey}).base(plasmaBase);
@@ -135,12 +137,49 @@ function Results(props) {
       };
      
    
-    const bloodResourcesSlide =  bloodelements.map( (data) => <div> <BloodCard data = {data} /> </div>);
-    const plasmaResourcesSlide = plasmaelements.map( (data) => <div> <PlasmaCard data = {data}/> </div>);
-    const oxyResourcesSlide = oxyelements.map( (data) => <div> <OxyCard data = {data} /> </div>);
-    const medResourcesSlide =  medelements.map( (data) => <div> <MedsCard data ={data} /> </div>);
-    const bedResourcesSlide = bedelements.map( (data) => <div> <BedCard data = {data} /> </div>);
-    const ambulanceResourcesSlide = ambulanceelements.map( (data) => <div> <AmbulanceCard data= {data} /> </div>);
+    const bloodResourcesSlide =  bloodelements.filter(element => 
+
+        element.fields["blood-group"] === props.bloodGroup && element.fields["region"] === props.region
+
+    ).map( (data) => <div> <BloodCard data = {data} /> </div>);
+
+
+    const plasmaResourcesSlide = plasmaelements.filter(element => 
+
+        element.fields["region"] === props.region
+
+    ).map( (data) => <div> <PlasmaCard data = {data}/> </div>);
+
+
+    const oxyResourcesSlide = oxyelements.filter(element => 
+
+        element.fields["region"] === props.region && element.fields["type"] === props.oxy
+
+    ).map( (data) => <div> <OxyCard data = {data} /> </div>);
+
+
+    const medResourcesSlide =  medelements.filter(element => 
+
+        element.fields["region"] === props.region && props.med.map( m => element.fields["meds-name"].includes(m)).includes(true)
+
+    ).map( (data) => <div> <MedsCard data ={data} /> </div>);
+
+
+    const bedResourcesSlide = bedelements.filter(element => 
+
+        element.fields["region"] === props.region
+
+    ).map( (data) => <div> <BedCard data = {data} /> </div>);
+
+
+    const ambulanceResourcesSlide = ambulanceelements.filter(element => 
+
+        element.fields["region"] === props.region
+
+    ).map( (data) => <div> <AmbulanceCard data= {data} /> </div>);
+
+
+
   return (
 
        

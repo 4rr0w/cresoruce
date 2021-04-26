@@ -7,6 +7,26 @@ import Typography from '@material-ui/core/Typography';
 
 
 function MedsCard(props) {   
+
+  const meds = props.data.fields["meds-name"].split("");
+
+  var allMeds = [
+    {value: 'Remdesivir (Veklury)', key: '1'},
+    {value: 'Dexamethasone', key: '2'},
+    {value: 'Hydroxychloroquine', key: '3'},
+    {value: 'Azithromycin', key: '4'},
+    {value: 'Tocilizumab (Actemra)', key: '4'}
+];
+
+  console.log(allMeds.filter(({
+    key
+  }) => meds.includes(key)))
+
+    const medsName = allMeds.filter(({
+      key
+    }) => meds.includes(key)).map(e => e.value).join(', ');
+
+  console.log(meds)
     
       return (
         <Card style={{
@@ -31,12 +51,18 @@ function MedsCard(props) {
             </Typography>
             <Typography 
                 style={{
-                    marginBottom: 12,
+                    marginBottom: 3,
+                    marginTop: 5
                 }} 
                 color="textSecondary"
             >  
             <p>
-                {props.data.fields["meds-name"]}
+              <b> AVAILABLE MEDS </b>
+            </p>
+            <p>
+                {
+                  medsName
+                }
             </p>
             </Typography>
             <Typography variant="body2" component="p">

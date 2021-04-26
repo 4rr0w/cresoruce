@@ -136,9 +136,9 @@ function HomePage(props) {
                             onChange= {(oxy) => setOxygenType(oxy)}
                             style={{ width: '30%', minWidth: "250px", margin: "5px", maxHeight: "40px", overflow: 'auto'}}
                         >
-                            <Option value="refill">Cylinder Refill</Option>
-                            <Option value="cylinder">Cylinder</Option>
-                            <Option value="concentrator">Oxygen Concentrator</Option>
+                            <Option value="Refill">Cylinder Refill</Option>
+                            <Option value="Cylinder">Cylinder</Option>
+                            <Option value="Concentrator">Oxygen Concentrator</Option>
                         </Select>
 
 
@@ -163,12 +163,19 @@ function HomePage(props) {
                                 <Option value="AB+">O+</Option>
                                 <Option value="AB-">B-</Option>
                         </Select>
-                        <RangePicker 
-                            style={{height: "40px", margin: "5px", minWidth : "250px", width: "30%"}}
-                            placeholder = {["Diagonosed after", "Recovered before"]}
-                            picker = "month"
-                            onChange = {(date, dateString) => setDiagnosedRecovered(dateString)} 
-                        />
+
+                        {/* {
+                            requirenments.some(r =>  r === "Plasma") &&
+                            <>
+                                 <RangePicker 
+                                    style={{height: "40px", margin: "5px", minWidth : "250px", width: "30%"}}
+                                    placeholder = {["Diagonosed after", "Recovered before"]}
+                                    picker = "month"
+                                    onChange = {(date, dateString) => setDiagnosedRecovered(dateString)} 
+                                />
+                            </>
+                        } */}
+                       
                         </>
                         }
 
@@ -181,11 +188,11 @@ function HomePage(props) {
                         
                     </div>
 
-                    <div className="row m-auto mt-5" >
+                    {/* <div className="row m-auto mt-5" >
                         <Button type="primary" style={{width:"100%",marginTop: "20px"}} shape="round" icon={<SearchOutlined />} size="large">
                             Search
                         </Button>
-                    </div>
+                    </div> */}
 
 
                 
@@ -316,9 +323,9 @@ function HomePage(props) {
                             onChange= {(a) => console.log(a)}
                             style={{ width: '30%', minWidth: "250px", margin: "5px", maxHeight: "80px", overflow: 'auto'}}
                         >
-                            <Option value="refill">Cylinder Refill</Option>
-                            <Option value="cylinder">Cylinder</Option>
-                            <Option value="concentrator">Oxygen Concentrator</Option>
+                            <Option value="Refill">Cylinder Refill</Option>
+                            <Option value="Cylinder">Cylinder</Option>
+                            <Option value="Concentrator">Oxygen Concentrator</Option>
                         </Select>
 
 
